@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"R3D & SWC S3"
+	],
+	"copyright": "Copyright © 2021, R3D & SWC S3",
+	"dependencies": {
+		"arsd-official:jsvar": "~>10.3.10"
+	},
+	"description": "RimLang compiler",
+	"license": "MIT",
+	"name": "rimlang"
+}
