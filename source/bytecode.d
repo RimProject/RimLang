@@ -57,6 +57,17 @@ class PUSH : OpCode
 class Compiler
 {
 	string bytecode = "";
+	
+	void push(int val)
+	{
+		bytecode ~= (cast(char)1 ~ "" ~ cast(char)1) ~ cast(char[])IntToBytes(val).b ~ cast(char)0;
+	}
+	
+	void call(int id)
+	{
+		bytecode ~= cast(char)2 ~ IntToBytes2(id).b;
+	}
+	
 	void addOpcode(OpCode opc)
 	{
 		switch(opc.id)
@@ -93,5 +104,24 @@ class Compiler
 	string compile()
 	{
 		return "RIM" ~ cast(char)0 ~ cast(char)0 ~ bytecode;
+	}
+}
+
+Func[] funtable = [
+	new Func("print", 0, 1),
+	new Func("debug", 1, 0)
+];
+
+class Func
+{
+	string ctname;
+	int id;
+	int args;
+	
+	this(string s, int i1, int i2)
+	{
+		ctname = s;
+		id = i1;
+		args = i2;
 	}
 }
